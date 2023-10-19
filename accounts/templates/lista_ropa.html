@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="contenedor">
+    <h2>Lista de Ropa</h2>
+    <div class="contenedor_listas">
+        <ul class="lista">
+            {% for ropa in ropa %}
+                <li class="item">
+                    <div class="div20 imgs">
+                        <img src="{{ ropa.imagen.url }}" alt="{{ ropa.nombre }}" width="100">
+                    </div>
+                    <div class="div80 informacion">
+                        <strong>{{ ropa.nombre }}</strong><br>
+                        Descripción: {{ ropa.descripcion }}<br>
+                        Talla: {{ ropa.talla }}<br>
+                        Marca: {{ ropa.marca }}<br>
+                        Precio: ${{ ropa.precio }}<br>
+
+                        <div class="acciones">
+                            <div class="boton-editar">
+                                <form method="post" action="{% url 'editar_ropa' ropa.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                </form>
+                            </div>
+                            <div class="boton-eliminar">
+                                <form method="post" action="{% url 'eliminar_ropa' ropa.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

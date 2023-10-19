@@ -1,0 +1,280 @@
+/*=============================================
+=            Elemntos generales            =
+=============================================*/
+
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;	
+	margin: 0px;
+	padding: 0px;
+}
+*:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+	background-color: #f8f8f8;
+	font-family: 'Livvic', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	color: #455161;
+
+}
+
+
+/*=============================================
+=            barra de nav         =
+=============================================*/
+
+header {
+    background-color: #775CDA;
+    color: #fff;
+    padding: 1rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.logo img {
+	width: 50%;
+}
+
+.boton {
+    /* background-color: #775CDA; */
+    color: #fff;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+
+/*=============================================
+=            contenido principal        =
+=============================================*/
+
+.contenedor {
+    min-height: calc(100vh - 100px); /* Ajusta la altura según tu footer */
+    padding-bottom: 100px; /* Ajusta esto para que coincida con la altura de tu footer */
+    box-sizing: border-box;
+    background-color: #ddd;
+    color:#000;
+    padding: 4rem;
+}
+
+/*=============================================
+=                  home
+=============================================*/
+
+.contenedor_home {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.botones_ventas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    
+}
+
+    .contenedor_home ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .contenedor_home ul li {
+        margin-bottom: 10px;
+    }
+
+    .contenedor_home ul li a {
+        width: 400px;
+        text-decoration: none;
+        background-color: #775cda;
+        color: #fff;
+        padding: 10px 20px;
+        display: block;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .contenedor_home ul li a:hover {
+        background-color: #9783e1;;
+
+    }
+
+
+/*=============================================
+=            footer        =
+=============================================*/
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 4rem;
+}
+
+.copyright {
+	text-align: center;
+  font-size: 12px;
+}
+
+/*=============================================
+=            formularios       =
+=============================================*/
+.contenedor_formulario h2{
+    padding-top: 0rem;
+}
+
+h2 {
+    padding-bottom: 2rem;
+    text-align: center; 
+}
+
+.contenedor_formulario {
+    width: auto;
+    height: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #775cda;
+    border-radius:22px;
+    padding: 20px; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+}
+
+.contenedor_listas {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+}
+
+.formulario {
+    border:1px solid transparente;
+  
+}
+
+.registro-link {
+    margin-top: 20px;
+}
+
+
+/* Estilos personalizados para el formulario */
+ .form-group {
+    margin-bottom: 15px;
+} 
+
+/* Estilos personalizados para el botón de registro */
+.btn {
+    padding: 10px 20px;
+    background-color: #775cda;
+    border-radius:8px;
+    color: #fff;
+    border: none;
+    cursor: pointer; 
+    margin-bottom: 2rem;  
+} 
+
+.campo {
+    margin-bottom: 10px; /* Espacio entre campos */
+}
+
+
+/* Estilos lista */
+.lista {
+    list-style: none;
+    padding: 0;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Espacio entre elementos de la lista */
+}
+
+.div20 {
+    width: 200px;
+    float: left;
+    box-sizing: border-box;
+  }
+  
+.div80 {
+    width: 800px;
+    float: left;
+    box-sizing: border-box;
+}
+
+.imgs {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.imgs img {
+    width: 100%;
+}
+
+.informacion {
+    /* flex: 1; Ocupa el espacio restante disponible en el contenedor */
+}
+
+
+.msj_despedida {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+}
+
+/* Estilo para la división que contiene los botones de editar y eliminar */
+.acciones {
+    width: 150px;
+    
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 10px; 
+}
+
+/* Estilo para el botón de editar */
+.boton-editar button {
+    border: none; 
+    padding: 5px 10px; 
+    cursor: pointer;
+}
+
+/* Estilo para el botón de eliminar */
+.boton-eliminar button {
+    border: none; 
+    padding: 5px 10px; 
+    cursor: pointer; 
+}
+
+.boton-editar button:hover, .boton-eliminar button:hover {
+    opacity: 0.8;
+}

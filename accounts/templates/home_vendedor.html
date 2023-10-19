@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<section class="contenedor">
+						
+			<div class="contenedor_home">
+
+				<ul class="botones_ventas">
+                    <h2>{{mensaje}}</h2>
+					<h2>¿Qué quieres vender?</h2>
+					<li><a href="{% url 'agregar_ropa' %}">Ropa</a></li>
+					<li><a href="">Zapatos</a></li>
+					<li><a href="">Accesorios</a></li>
+				</ul>
+
+			</div>
+
+	</section>
+
+{% endblock %}
