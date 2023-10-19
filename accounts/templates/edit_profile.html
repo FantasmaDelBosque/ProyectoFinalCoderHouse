@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="contenedor">
+      <div class="contenedor_formulario">
+   
+        <h2>Editar Perfil de Usuario</h2>
+
+        <form action="{% url 'edit_profile' %}" method="post">
+          {% csrf_token %}
+          
+          <div class="form-group">
+              {{ form.username.label_tag }}
+              {{ form.username }}
+          </div>
+          
+          <div class="form-group">
+              {{ form.email.label_tag }}
+              {{ form.email }}
+          </div>
+
+          <div class="form-group">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+        </div>
+    
+        <div class="form-group">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+        </div>
+          
+          <!-- Agrega más campos aquí -->
+          
+          <button class="btn btn-primary" type="submit">Actualizar</button>
+      </form>
+      
+        
+          <a href="{% url 'profile' %}">Cancelar</a>
+      </div>
+
+
+
+    </section>
+   
+
+{% endblock %}
+
+

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm  # Usa el formulario de usuario predeterminado
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm # Usa el formulario de usuario predeterminado
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
-from .forms import RopaForm
+from .forms import UserEditForm, RopaForm
 from .models import Ropa 
 
 
@@ -14,6 +14,8 @@ def home(request):
 def home_vendedor (request):
     return render(request, "home_vendedor.html")
 
+def profile (request):
+    return render(request, "profile.html")
 
 
 def loginView(request):
@@ -57,6 +59,35 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
+
+
+
+
+@login_required
+def edit_user_profile(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, instance=usuario)
+
+        if form.is_valid():
+
+            data = form.cleaned_data
+            usuario.username = data["username"]
+            usuario.email = data["email"]
+            usuario.set_password(data["password1"])
+            usuario.save()
+
+            return render(request, "profile.html", {"mensaje": "Datos actualizados con éxito!"})
+        else:
+            return render(request, "edit_profile.html", {"form": form})
+    else:
+        form = UserEditForm(instance=usuario)
+        return render(request, "edit_profile.html", {"form": form})
+    
+
+
 
 
 

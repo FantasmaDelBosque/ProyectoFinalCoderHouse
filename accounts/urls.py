@@ -5,11 +5,13 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.home, name="home"),
+    path('home/', views.home, name="home"),
     path('login/', views.loginView, name='login'),
     path('logout/', LogoutView.as_view(template_name="logout.html"), name='logout'),
     path('register/', views.register, name='register'),
 
+    path('profile/', views.profile, name='profile'),  
+    path('edit_profile/', views.edit_user_profile, name='edit_profile'),
     path('home_vendedor/', views.home_vendedor, name='home_vendedor'),
 
     path('agregar_ropa/', views.agregar_ropa, name='agregar_ropa'),
