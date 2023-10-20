@@ -15,14 +15,12 @@ from .models import Ropa, Avatar
 
 
 def home(request):
-    try:
-        avatar = Avatar.objects.get(user=request.user.id)# pylint: disable=no-member
-        return render(request, "home.html"), {"url_avatar": avatar.imagen.url}
-    except:
-        return render(request, "home.html")
+
+    return render(request, "home.html")
 
 
 def home_vendedor (request):
+
     return render(request, "home_vendedor.html")
 
 
@@ -116,6 +114,7 @@ def edit_user_profile(request):
 
 @login_required
 def agregar_ropa(request):
+
     if request.method == 'POST':
         form = RopaForm(request.POST, request.FILES)
         if form.is_valid():
@@ -129,11 +128,13 @@ def agregar_ropa(request):
     return render(request, 'agregar_ropa.html', {'form': form})
 
 def lista_ropa(request):
+
     elementos_ropa = Ropa.objects.all()# pylint: disable=no-member
     return render(request, 'lista_ropa.html', {'ropa': elementos_ropa})
 
 @login_required
 def editar_ropa(request, ropa_id):
+
     ropa = Ropa.objects.get(pk=ropa_id)# pylint: disable=no-member
 
     if ropa.usuario == request.user:
@@ -195,3 +196,7 @@ def agregar_avatar(request):
         form = AvatarForm()
 
     return render(request, "agregar_avatar.html", {"form": form, "user_avatar": user_avatar})
+
+
+
+
