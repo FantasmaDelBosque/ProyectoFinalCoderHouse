@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="avatar-form-container">
+        <form action="{% url 'agregar_avatar' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            
+            <!-- Campo para cargar una nueva imagen de avatar -->
+            <div class="form-group">
+                {{ form.imagen.label_tag }}
+                {{ form.imagen }}
+                <small class="text-muted">Cargar nueva imagen de avatar</small>
+            </div>
+
+            <!-- Campo para eliminar el avatar -->
+            <div class="form-check">
+                {{ form.imagen.clear }}
+                {{ form.imagen.clear.label_tag }}
+                {{ form.imagen.clear }}
+                <label class="form-check-label" for="{{ form.imagen.clear.id_for_label }}">Eliminar avatar actual</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
+{% endblock %}

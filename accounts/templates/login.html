@@ -16,7 +16,8 @@
         
         <h2>Iniciar sesion</h2>
 
-        <form class="formulario" action="{% url 'login' %}" method="post">{% csrf_token %}
+        <form class="formulario" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
             
             <div class="form-group">
                 Nombre de usuario:

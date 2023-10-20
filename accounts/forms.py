@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserChangeForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import  Ropa 
+from .models import  Ropa, Avatar 
 
 class UserEditForm(UserChangeForm):
 
@@ -33,3 +33,12 @@ class RopaForm(forms.ModelForm):
     class Meta:
         model = Ropa
         fields = ['nombre', 'descripcion', 'talla', 'marca','precio', 'imagen']
+
+
+class AvatarForm(forms.ModelForm):
+    class Meta:
+        model = Avatar
+        fields = ("imagen",)
+        widgets = {
+            'imagen': forms.ClearableFileInput(),  # Elimina 'attrs' para 'multiple'
+        }

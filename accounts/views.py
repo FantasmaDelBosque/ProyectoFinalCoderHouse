@@ -1,21 +1,43 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm # Usa el formulario de usuario predeterminado
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
-from .forms import UserEditForm, RopaForm
-from .models import Ropa 
+from .forms import UserEditForm, AvatarForm, RopaForm
+from .models import Ropa, Avatar
+
+
+
+
+
 
 
 def home(request):
-    return render(request, "home.html")
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)# pylint: disable=no-member
+        return render(request, "home.html"), {"url_avatar": avatar.imagen.url}
+    except:
+        return render(request, "home.html")
+
 
 def home_vendedor (request):
     return render(request, "home_vendedor.html")
 
-def profile (request):
-    return render(request, "profile.html")
+
+
+@login_required
+def profile(request):
+    user_avatar = None
+    if request.user.is_authenticated:
+        try:
+            user_avatar = Avatar.objects.get(user=request.user)# pylint: disable=no-member
+        except Avatar.DoesNotExist:# pylint: disable=no-member
+            pass
+
+    return render(request, 'profile.html', {'user_avatar': user_avatar})
+
 
 
 def loginView(request):
@@ -146,3 +168,30 @@ def eliminar_ropa(request, ropa_id):
         return redirect('lista_ropa')
     else:
         return HttpResponseForbidden("No tienes permiso para eliminar esta ropa.")
+
+
+
+
+@login_required
+def agregar_avatar(request):
+    try:
+        user_avatar = Avatar.objects.get(user=request.user)# pylint: disable=no-member
+    except ObjectDoesNotExist:
+        user_avatar = None
+
+    if request.method == 'POST':
+        form = AvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+            if user_avatar:
+                # Si el usuario ya tiene un avatar, elimina el avatar existente
+                user_avatar.delete()
+
+            avatar = Avatar(user=request.user, imagen=data["imagen"])
+            avatar.save()
+            return redirect('profile')
+
+    else:
+        form = AvatarForm()
+
+    return render(request, "agregar_avatar.html", {"form": form, "user_avatar": user_avatar})
