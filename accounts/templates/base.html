@@ -22,7 +22,7 @@
 		            <li><a href="/accounts/lista-accesorios" class="boton">Accesorios</a></li>
 		            <li><a href="/accounts/home_vendedor" class="boton">Agregar</a></li>
 					<li><a href="/accounts/profile" class="boton">Sobre mi</a></li>
-					<li class="conten_avatar">
+					<li class="contenAvatar">
 						{% if user.is_authenticated %}
 							{% if user_avatar %}
 							<img src="{{ user_avatar.imagen.url }}" class="avatar" alt="avatar">            
