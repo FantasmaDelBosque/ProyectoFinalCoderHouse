@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserChangeForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import  Ropa, Avatar 
+from .models import  Ropa,Zapatos, Accesorios, Avatar 
 
 class UserEditForm(UserChangeForm):
 
@@ -33,6 +33,17 @@ class RopaForm(forms.ModelForm):
     class Meta:
         model = Ropa
         fields = ['nombre', 'descripcion', 'talla', 'marca','precio', 'imagen']
+
+class ZapatosForm(forms.ModelForm):
+    class Meta:
+        model = Zapatos
+        fields = ['nombre', 'descripcion', 'talla', 'marca','precio', 'imagen']
+
+class AccesoriosForm(forms.ModelForm):
+    class Meta:
+        model = Accesorios
+        fields = ['nombre', 'descripcion', 'talla', 'marca','precio', 'imagen']
+
 
 
 class AvatarForm(forms.ModelForm):

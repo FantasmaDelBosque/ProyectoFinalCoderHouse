@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="contenedor">
+    <h2>Lista de Accesorios</h2>
+    <div class="contenedor_listas">
+
+        <ul class="lista"> 
+            {% for accesorio in accesorios %}
+                <li class="item">
+                    <div class="div20 imgs">
+                        <img src="{{ accesorio.imagen.url }}" alt="{{ accesorio.nombre }}" width="100">
+                    </div>
+                    <div class="div80 informacion">
+                        <strong>{{ accesorio.nombre }}</strong><br>
+                        Descripción: {{ accesorio.descripcion }}<br>
+                        Talla: {{ accesorio.talla }}<br>
+                        Marca: {{ accesorio.marca }}<br>
+                        Precio: ${{ accesorio.precio }}<br>
+                    </div>                    
+                </li>               
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{% endblock %}

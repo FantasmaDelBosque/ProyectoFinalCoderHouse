@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="contenedor">   
+    <h2>Lista de Zapatos</h2>
+    <div class="contenedor_listas">
+    
+        <ul class="lista">
+            {% for zapato in zapatos %}
+                <li class="item">
+                    <div class="div20 imgs">
+                        <img src="{{ zapatos.imagen.url }}" alt="{{ zapato.nombre }}" width="100">
+                    </div>
+                    <div class="div80 informacion">
+                        <strong>{{ zapato.nombre }}</strong><br>
+                        Descripción: {{ zapato.descripcion }}<br>
+                        Talla: {{ zapato.talla }}<br>
+                        Marca: {{ zapato.marca }}<br>
+                        Precio: ${{ zapato.precio }}<br>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+

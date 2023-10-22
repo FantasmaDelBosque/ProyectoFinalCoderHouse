@@ -1,8 +1,7 @@
-{% extends 'base.html' %}
 
-{% block content %}
-<section class="contenedor">
-    <div class="contenedor_formulario">
+
+
+    <div class="contenedor_formulario_profile">
         <form action="{% url 'agregar_avatar' %}" enctype="multipart/form-data" method="post">
             {% csrf_token %}
             
@@ -24,7 +23,6 @@
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         </form>
     </div>
-</section>
+
     
 
-{% endblock %}

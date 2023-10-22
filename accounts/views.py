@@ -5,8 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm # Usa
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
-from .forms import UserEditForm, AvatarForm, RopaForm
-from .models import Ropa, Avatar
+from .forms import UserEditForm, AvatarForm, RopaForm, ZapatosForm, AccesoriosForm
+from .models import Ropa, Zapatos, Accesorios, Avatar
 
 
 
@@ -111,7 +111,6 @@ def edit_user_profile(request):
 
 
 
-
 @login_required
 def agregar_ropa(request):
 
@@ -126,6 +125,7 @@ def agregar_ropa(request):
         form = RopaForm()
     
     return render(request, 'agregar_ropa.html', {'form': form})
+
 
 def lista_ropa(request):
 
@@ -157,9 +157,6 @@ def editar_ropa(request, ropa_id):
     else:
         return HttpResponseForbidden("No tienes permiso para editar esta ropa.")
 
-
-
-
 @login_required
 def eliminar_ropa(request, ropa_id):
     ropa = Ropa.objects.get(pk=ropa_id)# pylint: disable=no-member
@@ -169,6 +166,120 @@ def eliminar_ropa(request, ropa_id):
         return redirect('lista_ropa')
     else:
         return HttpResponseForbidden("No tienes permiso para eliminar esta ropa.")
+    
+
+
+
+
+
+@login_required
+def agregar_zapatos(request):
+    if request.method == 'POST':
+        form = ZapatosForm(request.POST, request.FILES)
+        if form.is_valid():
+            zapatos = form.save(commit=False)
+            zapatos.usuario = request.user  # Establecer el usuario actual
+            zapatos.save()
+            return redirect('lista_zapatos')
+
+    else:
+        form = ZapatosForm()
+
+    return render(request, 'agregar_zapatos.html', {'form': form})
+
+def lista_zapatos(request):
+    zapatos = Zapatos.objects.all()# pylint: disable=no-member
+    return render(request, 'lista_zapatos.html', {'zapatos': zapatos})
+
+@login_required
+def editar_zapatos(request, zapatos_id):
+    zapatos = Zapatos.objects.get(pk=zapatos_id) # pylint: disable=no-member
+
+    if zapatos.usuario == request.user:
+        if request.method == 'POST':
+            form = ZapatosForm(request.POST, request.FILES, instance=zapatos)
+            if form.is_valid():
+                zapatos = form.save(commit=False)
+                zapatos.usuario = request.user
+                zapatos.save()
+                return redirect('lista_zapatos')
+
+        else:
+            form = ZapatosForm(instance=zapatos)
+        
+        print("Formulario válido:", form.is_valid())
+
+        return render(request, 'editar_zapatos.html', {'form': form, 'zapatos': zapatos})
+    else:
+        return HttpResponseForbidden("No tienes permiso para editar estos zapatos.")
+
+@login_required
+def eliminar_zapatos(request, zapatos_id):
+    zapatos = Zapatos.objects.get(pk=zapatos_id)# pylint: disable=no-member  
+
+    if zapatos.usuario == request.user:
+        zapatos.delete()
+        return redirect('lista_zapatos')
+    else:
+        return HttpResponseForbidden("No tienes permiso para eliminar estos zapatos.")
+    
+
+
+
+
+    
+@login_required
+def agregar_accesorios(request):
+    if request.method == 'POST':
+        form = AccesoriosForm(request.POST, request.FILES)
+        if form.is_valid():
+            accesorios = form.save(commit=False)
+            accesorios.usuario = request.user  # Asigna el usuario actual
+            accesorios.save()
+            return redirect('lista_accesorios') 
+    else:
+        form = AccesoriosForm()
+    
+    return render(request, 'agregar_accesorios.html', {'form': form})
+
+
+def lista_accesorios(request):
+    accesorios = Accesorios.objects.all()# pylint: disable=no-member
+    return render(request, 'lista_accesorios.html', {'accesorios': accesorios})
+
+@login_required
+def editar_accesorios(request, accesorios_id):
+    accesorios = Accesorios.objects.get(pk=accesorios_id)# pylint: disable=no-member
+
+    if accesorios.usuario == request.user:
+        if request.method == 'POST':
+            form = AccesoriosForm(request.POST, request.FILES, instance=accesorios)
+            if form.is_valid():
+                accesorios = form.save(commit=False)
+                accesorios.usuario = request.user
+                accesorios.save()
+                return redirect('lista_accesorios')
+
+        else:
+            form = AccesoriosForm(instance=accesorios)
+
+        print("Formulario válido:", form.is_valid())
+
+        return render(request, 'editar_accesorios.html', {'form': form, 'accesorios': accesorios})
+    else:
+        return HttpResponseForbidden("No tienes permiso para editar estos accesorios.")
+
+@login_required
+def eliminar_accesorios(request, accesorios_id):
+    accesorios = Accesorios.objects.get(pk=accesorios_id)# pylint: disable=no-member
+
+    if accesorios.usuario == request.user:
+        accesorios.delete()
+        return redirect('lista_accesorios')
+    else:
+        return HttpResponseForbidden("No tienes permiso para eliminar estos accesorios.")
+    
+
 
 
 

@@ -3,10 +3,22 @@
 
 {% block content %}
 
+<section class="contenedor">
+        <!-- Incluye el contenido de edit_profile.html -->
+        {% include 'edit_profile.html' %}
+
+        <!-- Incluye el contenido de agregar_avatar.html -->
+        {% include 'agregar_avatar.html' %}
+    
+    
+        <div class="parrafo_texto">
+            <h1>Sobre mi</h1>
+            <p>Yo soy Isa</p>
+        </div>
+
+</section>
 
 
-
-<a href="{% url 'edit_profile' %}">Editar perfil</a>
 
 
 {% endblock %}

@@ -20,12 +20,12 @@
 		            <li><a href="/accounts/lista-ropa" class="boton">Ropa</a></li>
 		            <li><a href="/accounts/lista-zapatos" class="boton">Zapatos</a></li>
 		            <li><a href="/accounts/lista-accesorios" class="boton">Accesorios</a></li>
-		            <li><a href="/accounts/sobremi" class="boton">Sobre mí</a></li>
-					<li><a href="/accounts/profile" class="boton">Profile</a></li>
-					<li>
+		            <li><a href="/accounts/home_vendedor" class="boton">Agregar</a></li>
+					<li><a href="/accounts/profile" class="boton">Sobre mi</a></li>
+					<li class="conten_avatar">
 						{% if user.is_authenticated %}
 							{% if user_avatar %}
-							<img src="{{ user_avatar.imagen.url }}"" height="30px" alt="avatar">            
+							<img src="{{ user_avatar.imagen.url }}" class="avatar" alt="avatar">            
 							{% endif %}
 							<a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
 						{% else %}

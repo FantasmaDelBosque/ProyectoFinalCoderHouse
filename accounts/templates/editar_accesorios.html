@@ -5,7 +5,7 @@
     <div class="contenedor_formulario">
         <form class="formulario" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <h2>Editar  Ropa</h2>
+            <h2>Editar  Accesorios</h2>
             
             <div class="campo">
                 {{ form.nombre.label_tag }}
@@ -46,12 +46,12 @@
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         </form>
 
-        <form method="post" action="{% url 'eliminar_ropa' ropa.id %}">
+        <form method="post" action="{% url 'eliminar_accesorios' accesorios.id %}">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger" name="delete">Eliminar</button>
         </form>
         
-        <a href="{% url 'lista_ropa' %}" class="btn btn-secondary">Cancelar cambios</a>
+        <a href="{% url 'lista_aacesorios' %}" class="btn btn-secondary">Cancelar cambios</a>
     </div>
 </section>
 {% endblock %}

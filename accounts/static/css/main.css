@@ -52,6 +52,7 @@ nav li {
     margin-right: 20px;
 }
 
+
 .logo {
     margin-left: 20px;
 }
@@ -67,6 +68,12 @@ nav li {
     text-decoration: none;
 }
 
+.avatar {
+    width: 30px;
+    height: 30px;
+    /* border-radius: 50%; */
+    overflow: hidden;
+}
 /*=============================================
 =            contenido principal        =
 =============================================*/
@@ -179,6 +186,22 @@ h2 {
     transform: translate(-50%, -50%);   
 }
 
+.contenedor_formulario_profile{
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #775cda;
+    border-radius: 22px;
+    padding: 20px;
+    margin: auto;
+    margin-top: auto;
+    margin-top: 4rem;  
+    margin-bottom: 4rem;
+}
+
 .contenedor_listas {
     width: 100%;
     height: auto;
@@ -198,12 +221,12 @@ h2 {
 }
 
 
-/* Estilos personalizados para el formulario */
+
  .form-group {
     margin-bottom: 15px;
 } 
 
-/* Estilos personalizados para el botón de registro */
+
 .btn {
     padding: 10px 20px;
     background-color: #775cda;
@@ -219,7 +242,7 @@ h2 {
 }
 
 
-/* Estilos lista */
+
 .lista {
     list-style: none;
     padding: 0;
@@ -267,7 +290,7 @@ h2 {
 
 }
 
-/* Estilo para la división que contiene los botones de editar y eliminar */
+
 .acciones {
     width: 150px;
     
@@ -276,14 +299,14 @@ h2 {
     margin-top: 10px; 
 }
 
-/* Estilo para el botón de editar */
+
 .boton-editar button {
     border: none; 
     padding: 5px 10px; 
     cursor: pointer;
 }
 
-/* Estilo para el botón de eliminar */
+
 .boton-eliminar button {
     border: none; 
     padding: 5px 10px; 
@@ -293,7 +316,6 @@ h2 {
 .boton-editar button:hover, .boton-eliminar button:hover {
     opacity: 0.8;
 }
-
 
 
 

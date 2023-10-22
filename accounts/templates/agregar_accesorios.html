@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <section class="contenedor">
     <div class="contenedor_formulario">
         <form class="formulario" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <h2>Editar  Ropa</h2>
+            
+            <h2>Agregar Accesorios</h2>
             
             <div class="campo">
                 {{ form.nombre.label_tag }}
@@ -18,7 +20,7 @@
                 {{ form.descripcion }}
                 {{ form.descripcion.errors }}
             </div>
-            
+
             <div class="campo">
                 {{ form.talla.label_tag }}
                 {{ form.talla }}
@@ -36,22 +38,17 @@
                 {{ form.precio }}
                 {{ form.precio.errors }}
             </div>
-                        
+            
             <div class="campo">
                 {{ form.imagen.label_tag }}
                 {{ form.imagen }}
                 {{ form.imagen.errors }}
             </div>
             
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
-
-        <form method="post" action="{% url 'eliminar_ropa' ropa.id %}">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger" name="delete">Eliminar</button>
-        </form>
-        
-        <a href="{% url 'lista_ropa' %}" class="btn btn-secondary">Cancelar cambios</a>
     </div>
 </section>
+
 {% endblock %}
+
