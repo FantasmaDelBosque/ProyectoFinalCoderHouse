@@ -1,18 +1,17 @@
 
-
+<!-- 
 
     <div class="contenedor_formulario_profile">
         <form action="{% url 'agregar_avatar' %}" enctype="multipart/form-data" method="post">
             {% csrf_token %}
             
-            <!-- Campo para cargar una nueva imagen de avatar -->
+          
             <div class="form-group">
                 {{ form.imagen.label_tag }}
                 {{ form.imagen }}
                 <small class="text-muted">Cargar nueva imagen de avatar</small>
             </div>
 
-            <!-- Campo para eliminar el avatar -->
             <div class="form-check">
                 {{ form.imagen.clear }}
                 {{ form.imagen.clear.label_tag }}
@@ -25,4 +24,25 @@
     </div>
 
     
+ -->
 
+ <div class="contenedor_formulario_profile">
+    <h2>Editar Avatar</h2>
+    <form action="{% url 'agregar_avatar' %}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        
+        <!-- Campo para cargar una nueva imagen de avatar -->
+        <div class="form-group">
+            <label for="id_imagen">Cargar nueva imagen de avatar:</label>
+            <input type="file" id="id_imagen" name="imagen">
+        </div>
+
+        <!-- Campo para eliminar el avatar -->
+        <div class="form-check">
+            <input type="checkbox" id="id_imagen_clear" name="imagen_clear">
+            <label class="form-check-label" for="id_imagen_clear">Eliminar avatar actual</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+</div>

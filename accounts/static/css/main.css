@@ -177,7 +177,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid #775cda;
+    border: 2px solid #775cda;
     border-radius:22px;
     padding: 20px; 
     position: absolute;
@@ -193,7 +193,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid #775cda;
+    border: 2px solid #775cda;
     border-radius: 22px;
     padding: 20px;
     margin: auto;
@@ -317,5 +317,28 @@ h2 {
     opacity: 0.8;
 }
 
+.cont_profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.imagen_profile {
+    margin-right: 1rem;;
 
+}
+.parrafo_texto {
+    width: 800px;;
+
+}
+.centrar-imagen img{
+    border-radius: 10%;
+}
+
+.redes-sociales {
+   margin-top: 1rem;
+}
+
+.icono-social {
+
+}

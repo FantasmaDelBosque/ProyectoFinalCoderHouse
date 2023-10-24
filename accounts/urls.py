@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 from . import views
+from django.urls import reverse
 
 
 
@@ -22,7 +23,7 @@ urlpatterns = [
 
     path('agregar_zapatos/', views.agregar_zapatos, name='agregar_zapatos'),
     path('lista-zapatos/', views.lista_zapatos, name='lista_zapatos'),
-    path('editar_zapatos/<int:zapatos_id>/', views.editar_zapatos, name='editar_zapatos'),
+    path('/editar_zapatos/<int:zapatos_id>/', views.editar_zapatos, name='editar_zapatos'),  
     path('eliminar_zapatos/<int:zapatos_id>/', views.eliminar_zapatos, name='eliminar_zapatos'),
 
     path('agregar_accesorios/', views.agregar_accesorios, name='agregar_accesorios'),

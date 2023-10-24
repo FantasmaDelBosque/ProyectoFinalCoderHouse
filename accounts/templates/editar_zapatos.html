@@ -46,7 +46,7 @@
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         </form>
 
-        <form method="post" action="{% url 'eliminar_zapatos' ropa.id %}">
+        <form method="post" action="{% url 'eliminar_zapatos' zapatos.id %}">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger" name="delete">Eliminar</button>
         </form>

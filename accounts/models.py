@@ -24,7 +24,7 @@ class Zapatos(models.Model):
     talla = models.CharField(max_length=10)
     marca = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
-    imagen = models.ImageField(upload_to='zapatos/') 
+    imagen = models.ImageField(upload_to='media/zapatos/') 
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 class Accesorios(models.Model):

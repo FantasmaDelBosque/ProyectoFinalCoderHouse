@@ -126,22 +126,6 @@ def agregar_ropa(request):
     
     return render(request, 'agregar_ropa.html', {'form': form})
 
-@login_required
-def agregar_zapatos(request):
-    if request.method == 'POST':
-        form = ZapatosForm(request.POST, request.FILES)
-        if form.is_valid():
-            zapatos = form.save(commit=False)
-            zapatos.usuario = request.user  # Establecer el usuario actual
-            zapatos.save()
-            return redirect('lista_zapatos')
-
-    else:
-        form = ZapatosForm()
-
-    return render(request, 'agregar_zapatos.html', {'form': form})
-
-
 def lista_ropa(request):
 
     elementos_ropa = Ropa.objects.all()# pylint: disable=no-member
@@ -182,11 +166,20 @@ def eliminar_ropa(request, ropa_id):
     else:
         return HttpResponseForbidden("No tienes permiso para eliminar esta ropa.")
     
+@login_required
+def agregar_zapatos(request):
+    if request.method == 'POST':
+        form = ZapatosForm(request.POST, request.FILES)
+        if form.is_valid():
+            zapatos = form.save(commit=False)
+            zapatos.usuario = request.user  # Establecer el usuario actual
+            zapatos.save()
+            return redirect('lista_zapatos')
 
+    else:
+        form = ZapatosForm()
 
-
-
-
+    return render(request, 'agregar_zapatos.html', {'form': form})
 
 
 def lista_zapatos(request):

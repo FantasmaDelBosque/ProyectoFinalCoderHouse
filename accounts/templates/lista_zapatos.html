@@ -10,7 +10,7 @@
             {% for zapato in zapatos %}
                 <li class="item">
                     <div class="div20 imgs">
-                        <img src="{{ zapatos.imagen.url }}" alt="{{ zapato.nombre }}" width="100">
+                        <img src="{{ zapato.imagen.url }}" alt="{{ zapato.nombre }}" width="100">
                     </div>
                     <div class="div80 informacion">
                         <strong>{{ zapato.nombre }}</strong><br>
@@ -18,6 +18,21 @@
                         Talla: {{ zapato.talla }}<br>
                         Marca: {{ zapato.marca }}<br>
                         Precio: ${{ zapato.precio }}<br>
+                        <div class="acciones">
+                            <div class="boton-editar">
+                                <form method="post" action="{% url 'editar_zapatos' zapato.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                </form>
+                            </div>
+                            <div class="boton-eliminar">
+                                <form method="post" action="{% url 'eliminar_zapatos' zapato.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </div>
+                        </div>
+                                               
                     </div>
                 </li>
             {% endfor %}
@@ -28,6 +43,7 @@
 </section>
 
 {% endblock %}
+
 
 
 
