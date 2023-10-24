@@ -13,7 +13,7 @@
 	<body>
 		<header>
 		    <div class="logo">
-		        <a href="/accounts/home"><img src="{% static 'imgs/logo.png' %}"  alt="Logo de la tienda"></a>
+		        <a href="/accounts/login"><img src="{% static 'imgs/logo.png' %}"  alt="Logo de la tienda"></a>
 		    </div>
 		    <nav>
 		        <ul>
@@ -21,11 +21,13 @@
 		            <li><a href="/accounts/lista-zapatos" class="boton">Zapatos</a></li>
 		            <li><a href="/accounts/lista-accesorios" class="boton">Accesorios</a></li>
 		            <li><a href="/accounts/home_vendedor" class="boton">Agregar</a></li>
-					<li><a href="/accounts/profile" class="boton">Sobre mi</a></li>
+					<li><a href="/accounts/sobre_mi" class="boton">Sobre Mi</a></li>
 					<li class="contenAvatar">
 						{% if user.is_authenticated %}
 							{% if user_avatar %}
-							<img src="{{ user_avatar.imagen.url }}" class="avatar" alt="avatar">            
+							<a href="/accounts/profile">
+								<img src="{{ user_avatar.imagen.url }}" class="avatar" alt="avatar">
+							  </a>           
 							{% endif %}
 							<a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
 						{% else %}

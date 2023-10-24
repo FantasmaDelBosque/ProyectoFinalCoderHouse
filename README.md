@@ -25,6 +25,12 @@ Los usuarios pueden realizar las siguientes accciones:
 
 Nota: La opción de editar y eliminar productos solo le está permitido al autor de la publicación de cada articulo.
 
+Nota2: La urls inicial seria http://127.0.0.1:8000/accounts
+
+Nota3: La usaraia que ya esta logeada y ya a cargado info 
+Usuario: Angela
+Contrasena: contrasena0
+
 ## Tecnología Utilizada
 
 ##### Front-End
@@ -37,8 +43,8 @@ Nota: La opción de editar y eliminar productos solo le está permitido al autor
 
 ## Pruebas Realizadas
 
-Ver archivo titulado "Pruebas Proyecto Python CH.xlsx" el cual se encuentra en el presente repositorio https://github.com/johannesgperez/ProyectoFinalMain.git
+Ver archivo titulado "Pruebas Proyecto Python CH.xlsx" el cual se encuentra en el presente repositorio https://docs.google.com/spreadsheets/d/1LkCPTblKlS5t9bZZSPQev7bKfmAhw-y9vTqgd02RxmY/edit#gid=2125215559
 
 ## Video Demostración
 
-https://youtu.be/O3tgo0Txl9Q
+

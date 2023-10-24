@@ -23,6 +23,10 @@ def home_vendedor (request):
 
     return render(request, "home_vendedor.html")
 
+def sobre_mi (request):
+
+    return render(request, "sobre_mi.html")
+
 
 
 @login_required
@@ -68,13 +72,9 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-
-            # Agregar un mensaje de registro exitoso
             messages.success(request, 'Registro exitoso. Ahora puedes iniciar sesión.')
-
             return redirect('login')
         else:
-            # Agregar un mensaje de error en caso de contraseñas no coincidentes
             messages.error(request, 'Error en el registro. Por favor, asegúrate de que las contraseñas coincidan.')
     else:
         form = UserCreationForm()

@@ -6,10 +6,12 @@ from django.urls import reverse
 
 
 urlpatterns = [
-    path('home/', views.home, name="home"),
+    path('', views.home, name="home"),
     path('login/', views.loginView, name='login'),
     path('logout/', LogoutView.as_view(template_name="logout.html"), name='logout'),
     path('register/', views.register, name='register'),
+
+     path('sobre_mi/', views.sobre_mi, name='sobre_mi'),
 
     path('profile/', views.profile, name='profile'),  
     path('edit_profile/', views.edit_user_profile, name='edit_profile'),
@@ -23,7 +25,7 @@ urlpatterns = [
 
     path('agregar_zapatos/', views.agregar_zapatos, name='agregar_zapatos'),
     path('lista-zapatos/', views.lista_zapatos, name='lista_zapatos'),
-    path('/editar_zapatos/<int:zapatos_id>/', views.editar_zapatos, name='editar_zapatos'),  
+    path('editar_zapatos/<int:zapatos_id>/', views.editar_zapatos, name='editar_zapatos'),  
     path('eliminar_zapatos/<int:zapatos_id>/', views.eliminar_zapatos, name='eliminar_zapatos'),
 
     path('agregar_accesorios/', views.agregar_accesorios, name='agregar_accesorios'),
